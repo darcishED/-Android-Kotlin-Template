@@ -1,42 +1,110 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'dependencies-loader'
+    id 'kotlin-kapt'
 }
 
 android {
-    compileSdk 32
+    compileSdk AndroidConfig.COMPILE_SDK
 
     defaultConfig {
-        applicationId "darc.kotlin.template"
-        minSdk 16
-        targetSdk 32
-        versionCode 1
-        versionName "1.0"
+        applicationId AndroidConfig.ID
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        targetSdkVersion AndroidConfig.TARGET_SDK
+        minSdkVersion AndroidConfig.MIN_SDK
+
+        versionCode AndroidConfig.versionCode
+        versionName AndroidConfig.versionName
+
+        multiDexEnabled true
+        vectorDrawables.useSupportLibrary = true
+
+        testInstrumentationRunner AndroidConfig.TEST_INSTRUMENTATION_RUNNER
+    }
+
+    signingConfigs {
+        release {
+//            storeFile file(AndroidConfig.KEYSTORE_PATH_RELEASE)
+        }
+        staging {
+//            storeFile file(AndroidConfig.KEYSTORE_PATH_STAGING)
+        }
+        debug { storeFile file(AndroidConfig.KEYSTORE_PATH_DEBUG) }
     }
 
     buildTypes {
         release {
-            minifyEnabled false
+            buildConfigField 'boolean', 'DEBUG', 'false'
+            buildConfigField 'boolean', 'STAGING', 'false'
+            debuggable false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+        staging {
+            buildConfigField 'boolean', 'DEBUG', 'false'
+            buildConfigField 'boolean', 'STAGING', 'true'
+            applicationIdSuffix AndroidConfig.ID_SUFFIX_STAGING
+            versionNameSuffix AndroidConfig.NAME_SUFFIX_STAGING
+            debuggable false
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.staging
+        }
+        debug {
+            buildConfigField 'boolean', 'DEBUG', 'true'
+            buildConfigField 'boolean', 'STAGING', 'false'
+            applicationIdSuffix AndroidConfig.ID_SUFFIX_DEBUG
+            versionNameSuffix AndroidConfig.NAME_SUFFIX_DEBUG
+            debuggable true
+            minifyEnabled false
+            signingConfig signingConfigs.debug
         }
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_11
         targetCompatibility JavaVersion.VERSION_11
     }
+
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_11
+        jvmTarget = JavaVersion.VERSION_11.toString()
+    }
+
+    buildFeatures {
+        dataBinding true
+        viewBinding true
     }
 }
 
 dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation 'androidx.core:core-ktx:1.8.0'
-    implementation 'androidx.appcompat:appcompat:1.4.2'
-    implementation 'com.google.android.material:material:1.6.1'
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    implementation Dependencies.appCompat
+    implementation Dependencies.constraints
+    implementation Dependencies.coreKtx
+    implementation Dependencies.gson
+    implementation Dependencies.intuitSdp
+    implementation Dependencies.intuitSsp
+    implementation Dependencies.koin
+    implementation Dependencies.kotlinxCoroutines
+    implementation Dependencies.lifecycleCommon
+    implementation Dependencies.lifecycleExtensions
+    implementation Dependencies.lifecycleLivedata
+    implementation Dependencies.lifecycleViewmodel
+    implementation Dependencies.lifecycleRuntime
+    implementation Dependencies.material
+    implementation Dependencies.multidex
+    implementation Dependencies.navigationFragment
+    implementation Dependencies.navigationUI
+    implementation Dependencies.recyclerView
+    implementation Dependencies.splashScreen
+    implementation Dependencies.timber
+
+    /* Tests */
+    androidTestImplementation TestDependencies.espresso
+    androidTestImplementation TestDependencies.jUnitTest
+    testImplementation TestDependencies.coroutinesTest
+    testImplementation TestDependencies.jUnit
 }
