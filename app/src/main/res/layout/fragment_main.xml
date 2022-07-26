@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.pages.main.MainFragment">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="darc.kotlin.template.ui.screens.main.MainViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?windowBackground">
+
+        <TextView
+            android:id="@+id/tv_welcome_text"
+            style="?textViewPrimary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/elmissiri_semi_bold"
+            android:text="@{viewModel.welcomeText}"
+            android:textSize="@dimen/_11ssp"
+            app:layout_constraintBottom_toTopOf="@id/btn_change_theme"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Testing..." />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_change_theme"
+            style="?buttonPrimary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_24sdp"
+            android:fontFamily="@font/elmissiri_semi_bold"
+            android:minHeight="0dp"
+            android:paddingHorizontal="@dimen/_16sdp"
+            android:paddingVertical="@dimen/_9sdp"
+            android:text="@string/change_theme"
+            app:layout_constraintBottom_toTopOf="@id/btn_change_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_change_text"
+            style="?buttonSecondary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_169sdp"
+            android:layout_marginBottom="@dimen/_24sdp"
+            android:fontFamily="@font/elmissiri_semi_bold"
+            android:minHeight="0dp"
+            android:onClick="@{() -> viewModel.setText()}"
+            android:paddingHorizontal="@dimen/_16sdp"
+            android:paddingVertical="@dimen/_9sdp"
+            android:text="@string/change_text"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
