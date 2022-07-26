@@ -1,3 +1,12 @@
 <resources>
+    <string name="_first_welcome_screen">First Welcome Screen</string>
+    <string name="_second_welcome_screen">Second Welcome Screen</string>
+    <string name="_third_welcome_screen">Third Welcome Screen</string>
+
     <string name="app_name">AndroidKotlinTemplate</string>
+    <string name="change_text">Change text</string>
+    <string name="change_theme">Change theme</string>
+    <string name="next">Next</string>
+    <string name="skip">Skip</string>
+    <string name="start">Start</string>
 </resources>
