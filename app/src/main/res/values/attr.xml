@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="textViewAlternate" format="reference" />
+    <attr name="textViewPrimary" format="reference" />
+    <attr name="textViewSecondary" format="reference" />
+    <attr name="buttonPrimary" format="reference" />
+    <attr name="buttonSecondary" format="reference" />
+    <attr name="windowBackground" format="reference" />
+    <attr name="toolbarStyle" format="reference" />
+    <attr name="ciDrawable" format="reference" />
+    <attr name="ciDrawableUnselected" format="reference" />
+</resources>
