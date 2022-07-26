@@ -46,6 +46,7 @@ object AndroidConfig {
 
 object Versions {
     const val APP_COMPAT = "1.4.2"
+    const val CIRCLE_INDICATOR = "2.1.6"
     const val CONSTRAINTS = "2.1.4"
     const val CORE_KTX = "1.8.0"
     const val GSON = "2.9.0"
@@ -69,6 +70,7 @@ object Versions {
 
 object Dependencies {
     const val appCompat = "androidx.appcompat:appcompat:${Versions.APP_COMPAT}"
+    const val circleIndicator = "me.relex:circleindicator:${Versions.CIRCLE_INDICATOR}"
     const val constraints = "androidx.constraintlayout:constraintlayout:${Versions.CONSTRAINTS}"
     const val coreKtx = "androidx.core:core-ktx:${Versions.CORE_KTX}"
     const val gson = "com.google.code.gson:gson:${Versions.GSON}"

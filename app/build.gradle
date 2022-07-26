@@ -82,6 +82,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation Dependencies.appCompat
+    implementation Dependencies.circleIndicator
     implementation Dependencies.constraints
     implementation Dependencies.coreKtx
     implementation Dependencies.gson
