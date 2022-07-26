@@ -1,0 +1,20 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="Base.AppTheme" parent="AppTheme">
+        <!-- Activate window transitions -->
+        <item name="android:windowContentTransitions">true</item>
+    </style>
+
+    <!-- Base application light theme. -->
+    <style name="AppTheme.Light" parent="Base.AppTheme.Light">
+        <!-- Status Bar Color. -->
+        <item name="android:statusBarColor">@color/white</item>
+    </style>
+
+    <!-- Base application dark theme. -->
+    <style name="AppTheme.Dark" parent="Base.AppTheme.Dark">
+        <!-- Status Bar Color. -->
+        <item name="android:statusBarColor">@color/black</item>
+    </style>
+</resources>
